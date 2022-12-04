@@ -31,7 +31,7 @@ cassandra:
   enabled: false
 
 mysql:
-  enabled: true
+  enabled: false
 
 postgresql:
   enabled: false
