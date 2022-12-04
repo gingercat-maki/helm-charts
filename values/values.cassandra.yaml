@@ -37,17 +37,17 @@ server:
               consistency: "local_quorum"
               serialConsistency: "local_serial"
 
-cassandra:
-  enabled: false
-
-mysql:
-  enabled: false
-
-postgresql:
-  enabled: false
-
-schema:
-  setup:
-    enabled: false
-  update:
-    enabled: false
+# cassandra:
+#   enabled: false
+#
+# mysql:
+#   enabled: false
+#
+# postgresql:
+#   enabled: false
+#
+# schema:
+#   setup:
+#     enabled: false
+#   update:
+#     enabled: false
