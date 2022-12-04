@@ -30,7 +30,7 @@ server:
     # Annotate pods directly with Prometheus annotations.
     # Use this if you installed Prometheus from a Helm chart.
     annotations:
-      enabled: true
+      enabled: false
     # Enable Prometheus ServiceMonitor
     # Use this if you installed the Prometheus Operator (https://github.com/coreos/prometheus-operator).
     serviceMonitor:
@@ -85,7 +85,7 @@ server:
     logLevel: "debug,info"
 
     # IMPORTANT: This value cannot be changed, once it's set.
-    numHistoryShards: 512
+    numHistoryShards: 32
 
     persistence:
       defaultStore: default
@@ -96,7 +96,7 @@ server:
 
         cassandra:
           hosts: []
-          # port: 9042
+          port: 9042
           keyspace: "temporal"
           user: "user"
           password: "password"
@@ -323,7 +323,7 @@ schema:
     backoffLimit: 100
 
 elasticsearch:
-  enabled: true
+  enabled: false
   replicas: 3
   persistence:
     enabled: false
@@ -338,12 +338,12 @@ elasticsearch:
   visibilityIndex: "temporal_visibility_v1_dev"
 
 prometheus:
-  enabled: true
+  enabled: false
   nodeExporter:
     enabled: false
 
 grafana:
-  enabled: true
+  enabled: false
   replicas: 1
   testFramework:
     enabled: false
@@ -400,7 +400,7 @@ grafana:
          datasource: TemporalMetrics
 
 cassandra:
-  enabled: true
+  enabled: false
   persistence:
     enabled: false
   image:
