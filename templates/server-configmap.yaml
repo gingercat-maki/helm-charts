@@ -108,7 +108,7 @@ data:
         tags:
           type: {{ $service }}
         prometheus:
-          timerType: histogram
+          framework: opentelemetry
           listenAddress: "0.0.0.0:9090"
 
 
@@ -185,6 +185,25 @@ data:
     {{- else }}
 
     {{- end }}
+
+    otel:
+      exporters:
+        - kind:
+            signal: trace
+            model: otlp
+            protocol: grpc
+          spec:
+            connection:
+              insecure: true
+              endpoint: "{{ `{{ .Env.HOST_IP }}` }}:4371"
+        - kind:
+            signal: metric
+            model: otlp
+            protocol: grpc
+          spec:
+            connection:
+              insecure: true
+              endpoint: "{{ `{{ .Env.HOST_IP }}` }}:4371"
 
     publicClient:
       hostPort: "{{ include "temporal.componentname" (list $ "frontend") }}:{{ $.Values.server.frontend.service.port }}"
